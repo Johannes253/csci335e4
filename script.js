@@ -42,13 +42,12 @@ window.onload = function () {
         fetch('https://random.dog/woof.json')
         .then(response => response.json())
         .then(data => {
-            const imageUrl = data.url;
             document.body.innerHTML = '<div style="text-align:center;">' +
                                       '<h1>Congratulations, that was correct!</h1>' +
-                                      '<h2>Here is a picture of a cute dog:</2>' +
-                                      '<img src="' + imageUrl + '" alt="Random Dog">' +
+                                      '<h2>Here is a picture of a happy dog:</2>' +
+                                      '<img src="' + data.url + '" alt="Random Dog" class="dog-image">' +
                                       '<br>' +
-                                      '<button onclick="location.reload();" style="margin-top:20px;">Get another question</button>' +
+                                      '<button class="dog-button" onclick="location.reload();" style="margin-top:20px;">Get another question</button>' +
                                       '</div>';
         })
         .catch(error => {
@@ -58,8 +57,8 @@ window.onload = function () {
         } else {
             document.body.innerHTML = '<div style="text-align:center;">' +
                               '<h1>Incorrect Answer</h1>' + '<h2>Now this puppy is sad, I hope you are happy</h2>' +
-                              '<img src="' + "/images/sad_puppy.jpg" + '" alt="Sad Puppy">' +
-                              '<button onclick="location.reload();" style="margin-top:20px;">I will promise to do better next time!</button>'+
+                              '<img src="' + "/images/sad_puppy.jpg" + '" alt="Sad Puppy" class="dog-image" >' +
+                              '<button class="dog-button" onclick="location.reload();" style="margin-top:20px;">I will promise to do better next time!</button>'+
                               '</div>';
         }
     });
