@@ -56,15 +56,6 @@ window.onload = function () {
             alert("Correct answer, but there was an issue fetching the dog image.");
         });
         } else {
-            const apiKey = 'YOUR_API_KEY'; // Replace with your API key
-            fetch(`https://api.ipapi.com/api/check?access_key=${apiKey}`)
-                .then(response => response.json())
-                .then(data => {
-                    alert(`Incorrect. Your details:\nLongitude: ${data.longitude}\nLatitude: ${data.latitude}\nHostname: ${data.ip}\nCountry: ${data.country_name}\nRegion: ${data.region}`);
-                })
-                .catch(err => {
-                    alert("Failed to fetch IP details.");
-                });
         }
     });
 }
