@@ -36,9 +36,15 @@ window.onload = function () {
     document.getElementById("answerForm").addEventListener("submit", function(event){
         event.preventDefault();
 
+
         const selectedAnswer = document.querySelector('input[name="triviaAnswer"]:checked').value;
         if(selectedAnswer === correctAnswer) {
-            alert("Correct answer!");
+            const imageUrl = "https://random.dog/9b906030-b598-4647-8f34-d68014c195f2.jpg";
+
+            document.body.innerHTML = '<div style="text-align:center;">' + '<h1>Congratulations, that was correct!</h1>' + '<p>Here is a picture of a cute dog:</p>' + '<img src="' + imageUrl + '" alt="Random Dog">' +
+                                      '<br>' +
+                                      '<button onclick="location.reload();" style="margin-top:20px;">Get another question</button>' +
+                                      '</div>';
         } else {
             alert("Incorrect. Try again.");
         }
