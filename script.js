@@ -57,7 +57,7 @@ window.onload = function () {
         } else {
             document.body.innerHTML = '<div style="text-align:center;">' +
                               '<h1>Incorrect Answer</h1>' + '<h2>Now this puppy is sad, I hope you are happy</h2>' +
-                              '<img src="' + "/images/sad_puppy.jpg" + '" alt="Sad Puppy" class="dog-image" >' +
+                              '<img src="' + "images/sad_puppy.jpg" + '" alt="Sad Puppy" class="dog-image" >' +
                               '<button class="dog-button" onclick="location.reload();" style="margin-top:20px;">I will promise to do better next time!</button>'+
                               '</div>';
         }
