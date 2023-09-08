@@ -1,7 +1,7 @@
 window.onload = function () {
     let correctAnswer = "";
 
-    fetch('https://opentdb.com/api.php?amount=1&difficulty=easy&type=multiple')
+    fetch('https://opentdb.com/api.php?amount=10&category=18&difficulty=hard')
         .then(response => response.json())
         .then(data => {
             const trivia = data.results[0];
@@ -45,7 +45,7 @@ window.onload = function () {
             const imageUrl = data.url;
             document.body.innerHTML = '<div style="text-align:center;">' +
                                       '<h1>Congratulations, that was correct!</h1>' +
-                                      '<p>Here is a picture of a cute dog:</p>' +
+                                      '<h2>Here is a picture of a cute dog:</2>' +
                                       '<img src="' + imageUrl + '" alt="Random Dog">' +
                                       '<br>' +
                                       '<button onclick="location.reload();" style="margin-top:20px;">Get another question</button>' +
@@ -56,6 +56,11 @@ window.onload = function () {
             alert("Correct answer, but there was an issue fetching the dog image.");
         });
         } else {
+            document.body.innerHTML = '<div style="text-align:center;">' +
+                              '<h1>Incorrect Answer</h1>' + '<h2>Now this puppy is sad, I hope you are happy</h2>' +
+                              '<img src="' + "/images/sad_puppy.jpg" + '" alt="Sad Puppy">' +
+                              '<button onclick="location.reload();" style="margin-top:20px;">I will promise to do better next time!</button>'+
+                              '</div>';
         }
     });
 }
