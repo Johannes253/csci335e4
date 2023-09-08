@@ -39,14 +39,32 @@ window.onload = function () {
 
         const selectedAnswer = document.querySelector('input[name="triviaAnswer"]:checked').value;
         if(selectedAnswer === correctAnswer) {
-            const imageUrl = "https://random.dog/9b906030-b598-4647-8f34-d68014c195f2.jpg";
-
-            document.body.innerHTML = '<div style="text-align:center;">' + '<h1>Congratulations, that was correct!</h1>' + '<p>Here is a picture of a cute dog:</p>' + '<img src="' + imageUrl + '" alt="Random Dog">' +
+        fetch('https://random.dog/woof.json')
+        .then(response => response.json())
+        .then(data => {
+            const imageUrl = data.url;
+            document.body.innerHTML = '<div style="text-align:center;">' +
+                                      '<h1>Congratulations, that was correct!</h1>' +
+                                      '<p>Here is a picture of a cute dog:</p>' +
+                                      '<img src="' + imageUrl + '" alt="Random Dog">' +
                                       '<br>' +
                                       '<button onclick="location.reload();" style="margin-top:20px;">Get another question</button>' +
                                       '</div>';
+        })
+        .catch(error => {
+            console.error("Error fetching dog image:", error);
+            alert("Correct answer, but there was an issue fetching the dog image.");
+        });
         } else {
-            alert("Incorrect. Try again.");
+            const apiKey = 'YOUR_API_KEY'; // Replace with your API key
+            fetch(`https://api.ipapi.com/api/check?access_key=${apiKey}`)
+                .then(response => response.json())
+                .then(data => {
+                    alert(`Incorrect. Your details:\nLongitude: ${data.longitude}\nLatitude: ${data.latitude}\nHostname: ${data.ip}\nCountry: ${data.country_name}\nRegion: ${data.region}`);
+                })
+                .catch(err => {
+                    alert("Failed to fetch IP details.");
+                });
         }
     });
 }
