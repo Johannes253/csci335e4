@@ -8,6 +8,7 @@ window.onload = function () {
             document.querySelector("#question").textContent = trivia.question;
 
             correctAnswer = trivia.correct_answer;
+            //THIS IS JUST A TEST COMMENTs
 
             const answers = [...trivia.incorrect_answers, trivia.correct_answer].sort(() => Math.random() - 0.5);
             const answerForm = document.querySelector("#answerForm .row");
